@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  <img src="{{magurl}}">-->
+  <!--错误的语法上面不能使用Mustache语法-->
+
+  <!--正确的做法使用v-bind语法实现动态绑定-->
+  <img v-bind:src="imgURL" alt="">
+  <a v-bind:href="ahref" >百度一下</a>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'你好啊',
+      imgURL:'https://static.runoob.com/images/demo/demo1.jpg',
+      ahref:'http://www.baidu.com'
+    }
+  })
+</script>
+</body>
+</html>
