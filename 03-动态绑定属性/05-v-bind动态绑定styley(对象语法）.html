@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--  注意将150px当做value 必须要加上单引号，否则当变量去解析-->
+  <!--  <h2 :style="{fontSize: '150px'}">{{message}}</h2>-->
+
+  <h2 :style="{fontSize: finalSize +'px',finalColor}">{{message}}</h2>
+  <!--  如果觉得上面写法太长的话 我们还有如下methods-->
+  <h2 :style="getStyles()">{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello',
+      finalSize: 100,
+      finalColor: 'red'
+    },
+    methods: {
+      getStyles: function () {
+        return {finalSize: this.finalSize + 'px', backgroundColor: this.finalColor}
+      }
+    }
+  })
+</script>
+</body>
+</html>
