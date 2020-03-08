@@ -6,16 +6,15 @@
 </head>
 <body>
 <div id="app">
-  <h2>{{url}}</h2>
-  <h3 v-html="url">{{url}}</h3>
+  <h2>{{message}}</h2>
+  <h3 v-text="message">,aanfaf</h3>
 </div>
-<script src="../js/vue.js"></script>
+<script src="../../js/vue.js"></script>
 <script>
   const app = new Vue({
     el:'#app',
     data:{
-      message: 'hello',
-      url: '<a href="http://www.baidu.com">百度一下</a>'
+      message: 'hello'
     }
   })
 </script>

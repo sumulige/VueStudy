@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!-- 第一种方案-->
+  <!--  <h2>{{firstName}} {{lastName}}</h2>-->
+  <!--  通过methods-->
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+
+  <h2>-----------</h2>
+  <!--  通过computed-->
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'kobe',
+      lastName: 'bryant'
+    },
+    methods: {
+      getFullName: function () {
+        // 调用了四次 性能较低
+        console.log('getFullName');
+        return this.firstName + ' ' + this.lastName;
+      }
+    },
+    computed: {
+      fullName: function () {
+        // 只调用了一次 性能高
+        console.log('fullName');
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

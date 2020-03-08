@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button>按钮3</button>
+  <button>按钮4</button>
+</div>
+<!--<script src="../../js/vue.js"></script>-->
+<script>
+  var btns = document.getElementsByTagName('button');
+  //错误演示，这里并不能实现点击那个打印哪个
+  /*for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click',function () {
+      console.log('第' + i + '个按钮被点击');
+    })
+  }*/
+
+  // 解决办法就是引入函数设置避免没有作用域 采用闭包
+  for (var i = 0; i < btns.length; i++) {
+    (function (newValue) {
+      btns[i].addEventListener('click', function () {
+        console.log('第' + newValue + '个按钮被点击');
+      })
+    })(i)
+  }
+
+  //ES6完美解决
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '个按钮被点击');
+    })
+  }
+</script>
+
+</body>
+</html>
