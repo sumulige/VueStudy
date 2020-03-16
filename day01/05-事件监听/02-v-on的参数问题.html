@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--  {{message}}-->
+  <!--  事件调用的方法没有参数-->
+  <button @click="btn1Click()">按钮1</button>
+  <button @click="btn2Click">按钮2</button>
+
+  <!--  在我们时间定义时，写函数时省略了小括号，但我们方法本身是需要一个参数的-->
+  <!--  <button @click="btn3Click()">按钮3</button>-->
+  <!--  另一种情况 这时候回显示mouseevent 当我们做这种操作浏览器自动生成一个event对象-->
+  <button @click="btn3Click">按钮3</button>
+
+  <!--  方法定义时，我们需要event对象，同时又需要其他参数-->
+  <!--  注意这个abc不加单引号就会报错 因为vue会把它当做变量处理-->
+  <button @click="btn4Click('abc',$event)">按钮4</button>
+
+
+  <button>按钮5</button>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'message'
+    },
+    methods: {
+      btn1Click() {
+        console.log("btnClick");
+      },
+      btn3Click(abc) {
+        console.log("btn3Click", abc);
+      },
+      btn4Click(abc, event) {
+        console.log("--------", abc, event);
+      }
+    }
+  })
+
+  //如果函数需要参数，但是没有参入，那么函数的形参
+  /* function abc(name) {
+     console.log(name);
+   }
+   abc()*/
+</script>
+
+</body>
+</html>
